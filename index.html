@@ -68,15 +68,20 @@
                 console.log(title, url)
 
                 container.innerHTML=content_obj[e.target.getAttribute('data-id')];
-                //gtagPageView(title, url);
+                gtagPageView(title, url);
+
             })
         }
 
         function gtagPageView(title, url){
             gtag('js', new Date());
             gtag('config', 'G-GTNFDQL5YN');
-            gtag('set', 'page_path', url);
-            gtag('event', 'page_view');
+            window.dataLayer.push({
+                'event': 'virtualPageview',
+                'pageUrl': url,
+                'pageTitle': title
+            });
+            console.log('poslato valjda: '+title + " | "+url)
         }
     </script>
 </body>
