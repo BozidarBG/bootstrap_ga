@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SPA bootstrap</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row w-50">
+            <div class="card">
+                <div class="card-header">
+                    <h1>SPA</h1>
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link spa_link" data-id="first" href="/prva-strana-spa">prva strana spa</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link spa_link" data-id="second" href="/druga-strana-spa">druga strana spa</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link spa_link" data-id="third" href="/treca-strana-spa">treca strana spa</a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </nav>
+                </div>
+                <div class="card-body" id="content">
+                    <p>Sadržaj prve stranice</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let content_obj ={
+            first:"<p>Sadržaj prve stranice</p>",
+            second:"<p>Sadržaj druge stranice</p>",
+            third:"<p>Sadržaj treće stranice</p>"
+        }
+
+        let container=document.getElementById('content');
+
+        let links=document.getElementsByClassName('spa_link')
+        for(let i=0; i<links.length; i++){
+            links[i].addEventListener('click', e=>{
+                e.preventDefault();
+                let title=e.target.innerText;
+                let url=e.target.href;
+                console.log(title, url)
+
+                container.innerHTML=content_obj[e.target.getAttribute('data-id')];
+                //gtagPageView(title, url);
+            })
+        }
+
+        function gtagPageView(title, url){
+
+        }
+    </script>
+</body>
+</html>
